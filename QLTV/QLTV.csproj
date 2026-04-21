@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -125,6 +140,7 @@
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\LoanController.cs" />
+    <Compile Include="Controllers\ReaderController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="DBConnections\BookDAO.cs" />
     <Compile Include="DBConnections\DBConnection.cs" />
@@ -164,11 +180,23 @@
     <Compile Include="Views\frmProfile.Designer.cs">
       <DependentUpon>frmProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Librarian\frmAddEditReader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Librarian\frmAddEditReader.Designer.cs">
+      <DependentUpon>frmAddEditReader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Librarian\frmQuanLyMuonTra.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Librarian\frmQuanLyMuonTra.Designer.cs">
       <DependentUpon>frmQuanLyMuonTra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Librarian\frmReaderManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Librarian\frmReaderManager.Designer.cs">
+      <DependentUpon>frmReaderManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\WarehouseManager\frmBookManager.cs">
       <SubType>Form</SubType>
@@ -194,8 +222,14 @@
     <EmbeddedResource Include="Views\frmProfile.resx">
       <DependentUpon>frmProfile.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Librarian\frmAddEditReader.resx">
+      <DependentUpon>frmAddEditReader.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Librarian\frmQuanLyMuonTra.resx">
       <DependentUpon>frmQuanLyMuonTra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Librarian\frmReaderManager.resx">
+      <DependentUpon>frmReaderManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\WarehouseManager\frmBookManager.resx">
       <DependentUpon>frmBookManager.cs</DependentUpon>
@@ -214,6 +248,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

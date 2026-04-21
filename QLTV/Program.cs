@@ -17,7 +17,7 @@ namespace QLTV
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmQuanLyMuonTra());
+            Application.Run(new QLTV.Views.WarehouseManager.frmBookManager());
         }
     }
 }

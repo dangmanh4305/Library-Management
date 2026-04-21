@@ -126,6 +126,7 @@
     <Compile Include="Controllers\BookController.cs" />
     <Compile Include="Controllers\LoanController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="DBConnections\BookDAO.cs" />
     <Compile Include="DBConnections\DBConnection.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Loan.cs" />
@@ -195,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Librarian\frmQuanLyMuonTra.resx">
       <DependentUpon>frmQuanLyMuonTra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseManager\frmBookManager.resx">
+      <DependentUpon>frmBookManager.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

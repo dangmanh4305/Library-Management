@@ -209,6 +209,7 @@
             this.txtMaDocGiaMuon.SelectedText = "";
             this.txtMaDocGiaMuon.Size = new System.Drawing.Size(229, 48);
             this.txtMaDocGiaMuon.TabIndex = 0;
+            this.txtMaDocGiaMuon.TextChanged += new System.EventHandler(this.txtMaDocGiaMuon_TextChanged);
             // 
             // tabPage2
             // 
@@ -364,7 +365,7 @@
             this.tabPage3.Controls.Add(this.guna2HtmlLabel1);
             this.tabPage3.Location = new System.Drawing.Point(184, 4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(882, 442);
+            this.tabPage3.Size = new System.Drawing.Size(731, 442);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Cảnh báo quá hạn";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -460,6 +461,7 @@
             this.dgvDanhSachQuaHan.ThemeStyle.RowsStyle.Height = 24;
             this.dgvDanhSachQuaHan.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.dgvDanhSachQuaHan.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvDanhSachQuaHan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSachQuaHan_CellContentClick);
             // 
             // colTenDocGia
             // 

@@ -145,5 +145,15 @@ namespace LibraryManagement.UI.Views.Librarian
                 }
             }
         }
+
+        private void dgvDanhSachQuaHan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void txtMaDocGiaMuon_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

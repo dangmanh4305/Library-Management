@@ -9,33 +9,62 @@ namespace QLTV.Views.WarehouseManager
     {
         BookController bookController = new BookController();
         int selectedBookId = -1;
+        Timer searchTimer = new Timer();
 
         public frmBookManager()
         {
             InitializeComponent();
         }
-        Timer searchTimer = new Timer();
 
         private void frmBookManager_Load(object sender, EventArgs e)
         {
+            StyleDataGridView();
             LoadBooks();
+            LoadCategories();
+            cbCategory.DropDownStyle = ComboBoxStyle.DropDown;
+
             this.ActiveControl = txtTitle;
-            searchTimer.Interval = 400; // 0.4s
-            searchTimer.Tick += SearchTimer_Tick;
             this.BackColor = Color.FromArgb(245, 247, 250);
 
-            StyleButtons();
-            StyleLabels();
-            StyleDataGridView();
-            StyleTextBox();
+            searchTimer.Interval = 400;
+            searchTimer.Tick += SearchTimer_Tick;
         }
 
+        // ================= LOAD =================
         private void LoadBooks()
         {
             dgvBooks.DataSource = bookController.GetAllBooks();
-            dgvBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            FormatGrid();
         }
 
+        // ================= FORMAT GRID =================
+        private void FormatGrid()
+        {
+            dgvBooks.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+
+            // Set width cố định
+            dgvBooks.Columns["BookID"].Width = 70;
+            dgvBooks.Columns["Title"].Width = 400;
+            dgvBooks.Columns["ISBN"].Width = 120;
+            dgvBooks.Columns["CategoryName"].Width = 150;
+            dgvBooks.Columns["TotalQuantity"].Width = 70;
+            dgvBooks.Columns["AvailableQuantity"].Width = 60;
+            dgvBooks.Columns["IsRare"].Width = 100;
+
+
+            dgvBooks.Columns["BookID"].HeaderText = "Mã sách";
+            dgvBooks.Columns["Title"].HeaderText = "Tên sách";
+            dgvBooks.Columns["ISBN"].HeaderText = "ISBN";
+            dgvBooks.Columns["CategoryName"].HeaderText = "Thể loại";
+            dgvBooks.Columns["TotalQuantity"].HeaderText = "Tổng số";
+            dgvBooks.Columns["AvailableQuantity"].HeaderText = "Còn lại";
+            dgvBooks.Columns["IsRare"].HeaderText = "Sách hiếm";
+
+            // Ẩn ID
+            dgvBooks.Columns["CategoryID"].Visible = false;
+        }
+
+        // ================= CLICK GRID =================
         private void dgvBooks_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -45,12 +74,21 @@ namespace QLTV.Views.WarehouseManager
                 selectedBookId = Convert.ToInt32(row.Cells["BookID"].Value);
                 txtTitle.Text = row.Cells["Title"].Value.ToString();
                 txtISBN.Text = row.Cells["ISBN"].Value.ToString();
-                txtCategoryId.Text = row.Cells["CategoryID"].Value.ToString();
+                cbCategory.SelectedValue = row.Cells["CategoryID"].Value;
                 txtQuantity.Text = row.Cells["TotalQuantity"].Value.ToString();
                 chkIsRare.Checked = Convert.ToBoolean(row.Cells["IsRare"].Value);
             }
         }
+        private void LoadCategories()
+        {
+            cbCategory.DataSource = bookController.GetCategories();
+            cbCategory.DisplayMember = "CategoryName";
+            cbCategory.ValueMember = "CategoryID";
 
+            cbCategory.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbCategory.AutoCompleteSource = AutoCompleteSource.ListItems;
+        }
+        // ================= VALIDATE =================
         private bool ValidateInput(out int categoryId, out int quantity)
         {
             categoryId = 0;
@@ -62,36 +100,121 @@ namespace QLTV.Views.WarehouseManager
                 return false;
             }
 
-            if (!int.TryParse(txtCategoryId.Text, out categoryId) ||
-                !int.TryParse(txtQuantity.Text, out quantity))
+            if (cbCategory.SelectedValue == null)
             {
-                MessageBox.Show("Thể loại và số lượng phải là số!");
+                MessageBox.Show("Chọn thể loại!");
+                return false;
+            }
+
+            categoryId = Convert.ToInt32(cbCategory.SelectedValue);
+
+            if (!int.TryParse(txtQuantity.Text, out quantity))
+            {
+                MessageBox.Show("Số lượng phải là số!");
                 return false;
             }
 
             return true;
         }
 
+        // ================= ADD =================
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (!ValidateInput(out int categoryId, out int quantity)) return;
-
-            bool result = bookController.AddBook(
-                txtTitle.Text,
-                txtISBN.Text,
-                categoryId,
-                chkIsRare.Checked,
-                quantity
-            );
-
-            MessageBox.Show(result ? "Thêm thành công!" : "Thêm thất bại!");
-            if (result)
+            try
             {
-                LoadBooks();
-                ClearForm();
+                // ===== VALIDATE =====
+                if (string.IsNullOrWhiteSpace(txtTitle.Text))
+                {
+                    MessageBox.Show("Nhập tên sách!");
+                    txtTitle.Focus();
+                    return;
+                }
+
+                if (!int.TryParse(txtQuantity.Text, out int quantity))
+                {
+                    MessageBox.Show("Số lượng phải là số!");
+                    txtQuantity.Focus();
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtISBN.Text))
+                {
+                    MessageBox.Show("Nhập ISBN!");
+                    txtISBN.Focus();
+                    return;
+                }
+
+                if (bookController.IsISBNExists(txtISBN.Text))
+                {
+                    MessageBox.Show("ISBN đã tồn tại!",
+                                    "Cảnh báo",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                    txtISBN.Focus();
+                    return;
+                }
+
+                // ===== CATEGORY =====
+                int categoryId;
+
+                if (cbCategory.SelectedValue != null &&
+                    int.TryParse(cbCategory.SelectedValue.ToString(), out categoryId))
+                {
+                }
+                else
+                {
+                    string newCategory = cbCategory.Text.Trim();
+
+                    if (string.IsNullOrEmpty(newCategory))
+                    {
+                        MessageBox.Show("Nhập thể loại!");
+                        return;
+                    }
+
+                    categoryId = bookController.AddCategory(newCategory);
+
+                    LoadCategories();
+                    cbCategory.SelectedValue = categoryId;
+                }
+
+                // ===== INSERT BOOK =====
+                bool result = bookController.AddBook(
+                    txtTitle.Text,
+                    txtISBN.Text,
+                    categoryId,
+                    chkIsRare.Checked,
+                    quantity
+                );
+
+                MessageBox.Show(result ? "Thêm thành công!" : "Thêm thất bại!");
+
+                if (result)
+                {
+                    LoadBooks();
+                    ClearForm();
+                }
+            }
+            catch (MySqlConnector.MySqlException ex)
+            {
+                if (ex.Number == 1062)
+                {
+                    MessageBox.Show("ISBN đã tồn tại!",
+                                    "Lỗi trùng dữ liệu",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi database: " + ex.Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi hệ thống: " + ex.Message);
             }
         }
 
+        // ================= UPDATE =================
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             if (selectedBookId == -1)
@@ -110,7 +233,8 @@ namespace QLTV.Views.WarehouseManager
                 chkIsRare.Checked
             );
 
-            MessageBox.Show(result ? "Cập nhật thành công!" : "Cập nhật thất bại!");
+            MessageBox.Show(result ? "Cập nhật thành công!" : "Thất bại!");
+
             if (result)
             {
                 LoadBooks();
@@ -118,6 +242,7 @@ namespace QLTV.Views.WarehouseManager
             }
         }
 
+        // ================= DELETE =================
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (selectedBookId == -1)
@@ -129,7 +254,9 @@ namespace QLTV.Views.WarehouseManager
             if (MessageBox.Show("Xóa sách này?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 bool result = bookController.DeleteBook(selectedBookId);
-                MessageBox.Show(result ? "Xóa thành công!" : "Xóa thất bại!");
+
+                MessageBox.Show(result ? "Xóa thành công!" : "Thất bại!");
+
                 if (result)
                 {
                     LoadBooks();
@@ -138,27 +265,32 @@ namespace QLTV.Views.WarehouseManager
             }
         }
 
+        // ================= REFRESH =================
         private void btnRefresh_Click(object sender, EventArgs e)
         {
+            txtSearch.Clear();
+            txtSearch.Clear();
             LoadBooks();
             ClearForm();
         }
 
+        // ================= CLEAR =================
         private void ClearForm()
         {
             txtTitle.Clear();
             txtISBN.Clear();
-            txtCategoryId.Clear();
             txtQuantity.Clear();
             chkIsRare.Checked = false;
             selectedBookId = -1;
         }
 
+        // ================= SEARCH REALTIME =================
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
             searchTimer.Stop();
             searchTimer.Start();
         }
+
         private void SearchTimer_Tick(object sender, EventArgs e)
         {
             searchTimer.Stop();
@@ -166,75 +298,37 @@ namespace QLTV.Views.WarehouseManager
             string keyword = txtSearch.Text.Trim();
 
             if (string.IsNullOrEmpty(keyword))
+            {
                 LoadBooks();
+            }
             else
+            {
                 dgvBooks.DataSource = bookController.SearchBooks(keyword);
-        }
-        private void StyleButtons()
-        {
-            Button[] buttons = { btnAdd, btnUpdate, btnDelete, btnRefresh };
-
-            foreach (var btn in buttons)
-            {
-                btn.FlatStyle = FlatStyle.Flat;
-                btn.FlatAppearance.BorderSize = 0;
-                btn.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-                btn.Height = 40;
-                btn.Width = 100;
-                btn.Cursor = Cursors.Hand;
+                FormatGrid();
             }
-
-            btnAdd.BackColor = Color.FromArgb(46, 204, 113);
-            btnUpdate.BackColor = Color.FromArgb(52, 152, 219);
-            btnDelete.BackColor = Color.FromArgb(231, 76, 60);
-            btnRefresh.BackColor = Color.FromArgb(155, 89, 182);
-
-            btnAdd.ForeColor = btnUpdate.ForeColor =
-            btnDelete.ForeColor = btnRefresh.ForeColor = Color.White;
         }
 
-        private void StyleLabels()
-        {
-            Label[] labels = { lblTitle, lblISBN, lblCategory, lblQuantity, label1 };
-
-            foreach (var lbl in labels)
-            {
-                lbl.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-                lbl.ForeColor = Color.FromArgb(52, 73, 94);
-            }
-
-            qly.Font = new Font("Segoe UI", 20, FontStyle.Bold);
-            qly.ForeColor = Color.FromArgb(41, 128, 185);
-        }
-
+        // ================= STYLE =================
         private void StyleDataGridView()
         {
             dgvBooks.BorderStyle = BorderStyle.None;
             dgvBooks.BackgroundColor = Color.White;
-            dgvBooks.DefaultCellStyle.Font = new Font("Segoe UI", 10);
+
+            dgvBooks.DefaultCellStyle.Font = new Font("Times New Roman", 10);
 
             dgvBooks.EnableHeadersVisualStyles = false;
-            dgvBooks.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
 
             dgvBooks.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(52, 152, 219);
             dgvBooks.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvBooks.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
+
+            dgvBooks.ColumnHeadersDefaultCellStyle.Font =
+                new Font("Times New Roman", 11, FontStyle.Bold);
+
+            dgvBooks.ColumnHeadersHeight = 30;
 
             dgvBooks.RowTemplate.Height = 35;
             dgvBooks.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(245, 245, 245);
-
-            dgvBooks.GridColor = Color.LightGray;
         }
 
-        private void StyleTextBox()
-        {
-            TextBox[] tbs = { txtTitle, txtISBN, txtCategoryId, txtQuantity, txtSearch };
-
-            foreach (var tb in tbs)
-            {
-                tb.Font = new Font("Segoe UI", 10);
-                tb.Height = 30;
-            }
-        }
     }
 }

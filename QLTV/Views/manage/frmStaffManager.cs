@@ -19,6 +19,7 @@ namespace QLTV
             // Khởi tạo Controller
             staffController = new StaffController();
             LoadComboBoxes();
+            CustomizeUI();
         }
 
         private void LoadComboBoxes()
@@ -27,6 +28,35 @@ namespace QLTV
             cbRole.DataSource = dtRoles;
             cbRole.DisplayMember = "RoleName"; // Hiển thị chữ cho người dùng xem
             cbRole.ValueMember = "RoleID";     // Giấu ID (1,2,3) ở dưới để lưu Database
+        }
+        private void CustomizeUI()
+        {
+            // 1. Đổi màu nền Form và Font chữ tổng thể
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular);
+            this.StartPosition = FormStartPosition.CenterScreen; // Tự động căn giữa màn hình khi mở
+
+            // 2. Lột xác DataGridView (Bảng dữ liệu)
+            dgvStaff.BackgroundColor = System.Drawing.Color.White;
+            dgvStaff.BorderStyle = BorderStyle.None;
+            dgvStaff.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            dgvStaff.RowHeadersVisible = false; // Ẩn cột mũi tên ngoài cùng bên trái
+            dgvStaff.SelectionMode = DataGridViewSelectionMode.FullRowSelect; // Bấm 1 ô chọn cả dòng
+            dgvStaff.AllowUserToAddRows = false; // Ẩn dòng trống dưới cùng
+            dgvStaff.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill; // Tự động giãn cột cho kín bảng
+
+            // 3. Trang trí Tiêu đề cột (Header)
+            dgvStaff.EnableHeadersVisualStyles = false; // BẮT BUỘC có dòng này mới đổi màu được
+            dgvStaff.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(41, 128, 185); // Xanh dương đậm
+            dgvStaff.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            dgvStaff.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            dgvStaff.ColumnHeadersHeight = 40;
+
+            // 4. Trang trí các dòng dữ liệu
+            dgvStaff.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(52, 152, 219); // Màu xanh nhạt khi bôi đen
+            dgvStaff.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.White;
+            dgvStaff.RowTemplate.Height = 35; // Tăng chiều cao dòng nhìn cho thoáng
+            dgvStaff.AlternatingRowsDefaultCellStyle.BackColor = System.Drawing.Color.FromArgb(240, 240, 240); // Hiệu ứng ngựa vằn (Trắng/Xám nhạt)
         }
 
         private void LoadData()

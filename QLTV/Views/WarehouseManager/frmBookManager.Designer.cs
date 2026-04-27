@@ -50,10 +50,12 @@
             // 
             // dgvBooks
             // 
+            this.dgvBooks.ColumnHeadersHeight = 34;
             this.dgvBooks.Location = new System.Drawing.Point(103, 110);
             this.dgvBooks.MultiSelect = false;
             this.dgvBooks.Name = "dgvBooks";
             this.dgvBooks.ReadOnly = true;
+            this.dgvBooks.RowHeadersWidth = 62;
             this.dgvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBooks.Size = new System.Drawing.Size(760, 200);
             this.dgvBooks.TabIndex = 2;
@@ -63,28 +65,28 @@
             // 
             this.txtTitle.Location = new System.Drawing.Point(179, 352);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(228, 20);
+            this.txtTitle.Size = new System.Drawing.Size(228, 26);
             this.txtTitle.TabIndex = 3;
             // 
             // txtISBN
             // 
             this.txtISBN.Location = new System.Drawing.Point(179, 382);
             this.txtISBN.Name = "txtISBN";
-            this.txtISBN.Size = new System.Drawing.Size(228, 20);
+            this.txtISBN.Size = new System.Drawing.Size(228, 26);
             this.txtISBN.TabIndex = 4;
             // 
             // txtCategoryId
             // 
             this.txtCategoryId.Location = new System.Drawing.Point(179, 412);
             this.txtCategoryId.Name = "txtCategoryId";
-            this.txtCategoryId.Size = new System.Drawing.Size(228, 20);
+            this.txtCategoryId.Size = new System.Drawing.Size(228, 26);
             this.txtCategoryId.TabIndex = 5;
             // 
             // txtQuantity
             // 
             this.txtQuantity.Location = new System.Drawing.Point(179, 442);
             this.txtQuantity.Name = "txtQuantity";
-            this.txtQuantity.Size = new System.Drawing.Size(228, 20);
+            this.txtQuantity.Size = new System.Drawing.Size(228, 26);
             this.txtQuantity.TabIndex = 6;
             // 
             // chkIsRare
@@ -168,7 +170,7 @@
             // 
             this.txtSearch.Location = new System.Drawing.Point(663, 326);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(200, 20);
+            this.txtSearch.Size = new System.Drawing.Size(200, 26);
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -179,7 +181,7 @@
             this.qly.ForeColor = System.Drawing.SystemColors.Highlight;
             this.qly.Location = new System.Drawing.Point(87, 35);
             this.qly.Name = "qly";
-            this.qly.Size = new System.Drawing.Size(308, 42);
+            this.qly.Size = new System.Drawing.Size(452, 64);
             this.qly.TabIndex = 16;
             this.qly.Text = "QUẢN LÝ SÁCH";
             // 
@@ -194,6 +196,7 @@
             // 
             // frmBookManager
             // 
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(954, 565);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.qly);

@@ -20,7 +20,6 @@ namespace QLTV.Views.Librarian
             // Wire controls
             btnSave.Click += BtnSave_Click;
             btnReset.Click += BtnReset_Click;
-            btnX.Click += (s, e) => this.Close();
 
             // default mode is Add
             PrepareForAdd();

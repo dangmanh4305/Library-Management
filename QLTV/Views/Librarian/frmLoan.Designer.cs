@@ -1,6 +1,6 @@
 ﻿namespace LibraryManagement.UI.Views.Librarian
 {
-    partial class frmQuanLyMuonTra
+    partial class frmLoan
     {
         /// <summary>
         /// Required designer variable.

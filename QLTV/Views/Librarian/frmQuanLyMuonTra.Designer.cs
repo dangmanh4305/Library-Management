@@ -34,34 +34,34 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.guna2TabControl1 = new global::Guna.UI2.WinForms.Guna2TabControl();
+            this.guna2TabControl1 = new Guna.UI2.WinForms.Guna2TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnLapPhieu = new global::Guna.UI2.WinForms.Guna2Button();
+            this.btnLapPhieu = new Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboSoNgayMuon = new global::Guna.UI2.WinForms.Guna2ComboBox();
-            this.txtMaSachMuon = new global::Guna.UI2.WinForms.Guna2TextBox();
-            this.txtMaDocGiaMuon = new global::Guna.UI2.WinForms.Guna2TextBox();
+            this.cboSoNgayMuon = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.txtMaSachMuon = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtMaDocGiaMuon = new Guna.UI2.WinForms.Guna2TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dgvSachDangMuon = new global::Guna.UI2.WinForms.Guna2DataGridView();
+            this.dgvSachDangMuon = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.btnTimSachTra = new Guna.UI2.WinForms.Guna2Button();
+            this.txtMaDocGiaTra = new Guna.UI2.WinForms.Guna2TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnGuiEmail = new Guna.UI2.WinForms.Guna2Button();
+            this.btnXuatExcel = new Guna.UI2.WinForms.Guna2Button();
+            this.dgvDanhSachQuaHan = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.colMaSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTenSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNgayMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHanTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colphat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colThaoTac = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnTimSachTra = new global::Guna.UI2.WinForms.Guna2Button();
-            this.txtMaDocGiaTra = new global::Guna.UI2.WinForms.Guna2TextBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnGuiEmail = new global::Guna.UI2.WinForms.Guna2Button();
-            this.btnXuatExcel = new global::Guna.UI2.WinForms.Guna2Button();
-            this.dgvDanhSachQuaHan = new global::Guna.UI2.WinForms.Guna2DataGridView();
             this.colTenDocGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLienHe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTenSachMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMaSachMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNgayTre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTienPhat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.guna2HtmlLabel1 = new global::Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2TabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -284,44 +284,6 @@
             this.dgvSachDangMuon.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvSachDangMuon.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSachDangMuon_CellContentClick);
             // 
-            // colMaSach
-            // 
-            this.colMaSach.HeaderText = "Mã Sách";
-            this.colMaSach.MinimumWidth = 6;
-            this.colMaSach.Name = "colMaSach";
-            // 
-            // colTenSach
-            // 
-            this.colTenSach.HeaderText = "Tên Sách";
-            this.colTenSach.MinimumWidth = 6;
-            this.colTenSach.Name = "colTenSach";
-            // 
-            // colNgayMuon
-            // 
-            this.colNgayMuon.HeaderText = "Ngày Mượn";
-            this.colNgayMuon.MinimumWidth = 6;
-            this.colNgayMuon.Name = "colNgayMuon";
-            // 
-            // colHanTra
-            // 
-            this.colHanTra.HeaderText = "Hạn Trả";
-            this.colHanTra.MinimumWidth = 6;
-            this.colHanTra.Name = "colHanTra";
-            // 
-            // colphat
-            // 
-            this.colphat.HeaderText = "Tiền phạt quá hạn";
-            this.colphat.MinimumWidth = 6;
-            this.colphat.Name = "colphat";
-            // 
-            // colThaoTac
-            // 
-            this.colThaoTac.HeaderText = "Thao tác";
-            this.colThaoTac.MinimumWidth = 6;
-            this.colThaoTac.Name = "colThaoTac";
-            this.colThaoTac.Text = "Nhận Trả";
-            this.colThaoTac.UseColumnTextForButtonValue = true;
-            // 
             // btnTimSachTra
             // 
             this.btnTimSachTra.BorderRadius = 15;
@@ -369,6 +331,7 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Cảnh báo quá hạn";
             this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabPage3.Click += new System.EventHandler(this.tabPage3_Click);
             // 
             // btnGuiEmail
             // 
@@ -401,6 +364,7 @@
             this.btnXuatExcel.Size = new System.Drawing.Size(159, 45);
             this.btnXuatExcel.TabIndex = 2;
             this.btnXuatExcel.Text = "Xuất File Excel";
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
             // dgvDanhSachQuaHan
             // 
@@ -463,6 +427,56 @@
             this.dgvDanhSachQuaHan.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.dgvDanhSachQuaHan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSachQuaHan_CellContentClick);
             // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(89, 39);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(514, 27);
+            this.guna2HtmlLabel1.TabIndex = 0;
+            this.guna2HtmlLabel1.Text = "DANH SÁCH ĐỘC GIẢ QUÁ HẠN CHƯA TRẢ SÁCH";
+            // 
+            // colMaSach
+            // 
+            this.colMaSach.HeaderText = "Mã Sách";
+            this.colMaSach.MinimumWidth = 6;
+            this.colMaSach.Name = "colMaSach";
+            // 
+            // colTenSach
+            // 
+            this.colTenSach.DataPropertyName = "TenSach";
+            this.colTenSach.HeaderText = "Tên Sách";
+            this.colTenSach.MinimumWidth = 6;
+            this.colTenSach.Name = "colTenSach";
+            // 
+            // colNgayMuon
+            // 
+            this.colNgayMuon.HeaderText = "Ngày Mượn";
+            this.colNgayMuon.MinimumWidth = 6;
+            this.colNgayMuon.Name = "colNgayMuon";
+            // 
+            // colHanTra
+            // 
+            this.colHanTra.HeaderText = "Hạn Trả";
+            this.colHanTra.MinimumWidth = 6;
+            this.colHanTra.Name = "colHanTra";
+            // 
+            // colphat
+            // 
+            this.colphat.HeaderText = "Tiền phạt quá hạn";
+            this.colphat.MinimumWidth = 6;
+            this.colphat.Name = "colphat";
+            // 
+            // colThaoTac
+            // 
+            this.colThaoTac.HeaderText = "Thao tác";
+            this.colThaoTac.MinimumWidth = 6;
+            this.colThaoTac.Name = "colThaoTac";
+            this.colThaoTac.Text = "Nhận Trả";
+            this.colThaoTac.UseColumnTextForButtonValue = true;
+            // 
             // colTenDocGia
             // 
             this.colTenDocGia.HeaderText = "Tên Độc Giả";
@@ -477,6 +491,7 @@
             // 
             // colTenSachMuon
             // 
+            this.colTenSachMuon.DataPropertyName = "TenSachMuon";
             this.colTenSachMuon.HeaderText = "Tên Sách Mượn";
             this.colTenSachMuon.MinimumWidth = 6;
             this.colTenSachMuon.Name = "colTenSachMuon";
@@ -498,17 +513,6 @@
             this.colTienPhat.HeaderText = "Tổng Tiền Phạt (VNĐ)";
             this.colTienPhat.MinimumWidth = 6;
             this.colTienPhat.Name = "colTienPhat";
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.Red;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(89, 39);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(514, 27);
-            this.guna2HtmlLabel1.TabIndex = 0;
-            this.guna2HtmlLabel1.Text = "DANH SÁCH ĐỘC GIẢ QUÁ HẠN CHƯA TRẢ SÁCH";
             // 
             // frmQuanLyMuonTra
             // 
@@ -545,21 +549,21 @@
         private Guna.UI2.WinForms.Guna2TextBox txtMaDocGiaTra;
         private Guna.UI2.WinForms.Guna2DataGridView dgvSachDangMuon;
         private Guna.UI2.WinForms.Guna2Button btnTimSachTra;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2DataGridView dgvDanhSachQuaHan;
+        private Guna.UI2.WinForms.Guna2Button btnGuiEmail;
+        private Guna.UI2.WinForms.Guna2Button btnXuatExcel;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaSach;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTenSach;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNgayMuon;
         private System.Windows.Forms.DataGridViewTextBoxColumn colHanTra;
         private System.Windows.Forms.DataGridViewTextBoxColumn colphat;
         private System.Windows.Forms.DataGridViewButtonColumn colThaoTac;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2DataGridView dgvDanhSachQuaHan;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTenDocGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn colLienHe;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTenSachMuon;
         private System.Windows.Forms.DataGridViewTextBoxColumn colMaSachMuon;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNgayTre;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTienPhat;
-        private Guna.UI2.WinForms.Guna2Button btnGuiEmail;
-        private Guna.UI2.WinForms.Guna2Button btnXuatExcel;
     }
 }

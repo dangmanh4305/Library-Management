@@ -2,6 +2,7 @@
 using System;
 using System.Data;
 using System.Windows.Forms;
+using ClosedXML.Excel;
 
 namespace LibraryManagement.UI.Views.Librarian
 {
@@ -154,6 +155,72 @@ namespace LibraryManagement.UI.Views.Librarian
         private void txtMaDocGiaMuon_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+        {
+            // 1. Kiểm tra xem bảng có dữ liệu không (Tên bảng dgvDanhSachQuaHan nhớ sửa lại cho đúng với Name bạn đặt nhé)
+            if (dgvDanhSachQuaHan.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 2. Mở hộp thoại cho phép người dùng chọn nơi lưu file
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel Workbook|*.xlsx"; // Chỉ lưu đuôi .xlsx
+            sfd.Title = "Lưu danh sách quá hạn";
+            sfd.FileName = "DanhSachQuaHan_" + DateTime.Now.ToString("ddMMyyyy") + ".xlsx"; // Gợi ý tên file có ngày tháng
+
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    // 3. Dùng ClosedXML để tạo file Excel mới
+                    using (XLWorkbook workbook = new XLWorkbook())
+                    {
+                        // Tạo một Sheet tên là "Quá Hạn"
+                        var worksheet = workbook.Worksheets.Add("Quá Hạn");
+
+                        // 3.1. In dòng Tiêu đề cột (Lấy từ Header của DataGridView)
+                        for (int i = 0; i < dgvDanhSachQuaHan.Columns.Count; i++)
+                        {
+                            worksheet.Cell(1, i + 1).Value = dgvDanhSachQuaHan.Columns[i].HeaderText;
+                            // Tô đậm chữ tiêu đề cho đẹp
+                            worksheet.Cell(1, i + 1).Style.Font.Bold = true;
+                            worksheet.Cell(1, i + 1).Style.Fill.BackgroundColor = XLColor.LightGray;
+                        }
+
+                        // 3.2. Đổ dữ liệu từng dòng từ DataGridView xuống Excel
+                        for (int i = 0; i < dgvDanhSachQuaHan.Rows.Count; i++)
+                        {
+                            for (int j = 0; j < dgvDanhSachQuaHan.Columns.Count; j++)
+                            {
+                                // Kiểm tra dữ liệu null để tránh bị lỗi văng app
+                                var cellValue = dgvDanhSachQuaHan.Rows[i].Cells[j].Value;
+                                worksheet.Cell(i + 2, j + 1).Value = cellValue != null ? cellValue.ToString() : "";
+                            }
+                        }
+
+                        // 3.3. Tự động giãn cột cho vừa khít với chữ (cực kỳ xịn)
+                        worksheet.Columns().AdjustToContents();
+
+                        // 4. Lưu file lại vào đường dẫn người dùng vừa chọn
+                        workbook.SaveAs(sfd.FileName);
+
+                        MessageBox.Show("Xuất file Excel thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Có lỗi xảy ra khi xuất file: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

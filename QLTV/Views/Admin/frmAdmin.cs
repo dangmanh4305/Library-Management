@@ -78,22 +78,9 @@ namespace QLTV.Views.Admin
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLogin frm = new frmLogin();
             if (MessageBox.Show("Bạn có chắc muốn đăng xuất không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (KiemTraTonTai(frm))
-                {
-                    foreach (Form f in Application.OpenForms)
-                    {
-                        if (f is frmLogin)
-                        {
-                            f.Activate();
-                            break;
-                        }
-                    }
-                }
                 this.Close();
-                frm.Show();
             }
         }
 

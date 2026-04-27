@@ -1,4 +1,4 @@
-﻿using MySqlConnector;
+﻿using MySql.Data.MySqlClient;
 using QLTV.Models;
 using System;
 using System.Data;
@@ -8,8 +8,8 @@ namespace QLTV.Controllers
 {
     public class StaffController
     {
-        // ⚠️ Đã sửa: Đổi 'connString' thành 'connectionString' và thêm 'private'
-        private string connectionString = "Server=192.168.1.155; Port=3306; Database=LibraryManagement; Uid=manh; Pwd=24052005; SslMode=None; AllowPublicKeyRetrieval=True;";
+        // ⚠️ QUAN TRỌNG: Sửa 'your_password' thành mật khẩu MySQL của máy bạn!
+        private string connectionString = "Server=localhost;Database=LibraryManagement;Uid=root;Pwd=manh12345;";
 
         // 1. Lấy danh sách nhân viên để hiển thị lên DataGridView
         public DataTable GetAllStaffs()
@@ -36,7 +36,7 @@ namespace QLTV.Controllers
             }
             catch (MySql.Data.MySqlClient.MySqlException mex)
             {
-                // Phân tích lỗi nếu Database không có cột Phone/Email (Fallback)
+                // If the database schema does not have Phone/Email columns, try a fallback query that provides NULL columns
                 if (mex.Message != null && mex.Message.Contains("Unknown column"))
                 {
                     try
@@ -106,8 +106,6 @@ namespace QLTV.Controllers
                 return false;
             }
         }
-
-        // 3. Cập nhật nhân viên
         public bool UpdateStaff(User staff)
         {
             try
@@ -162,8 +160,6 @@ namespace QLTV.Controllers
                 return false;
             }
         }
-
-        // 5. Lấy danh sách chức vụ
         public DataTable GetRoles()
         {
             DataTable dt = new DataTable();

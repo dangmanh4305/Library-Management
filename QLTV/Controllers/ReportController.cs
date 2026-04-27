@@ -1,4 +1,4 @@
-﻿using MySqlConnector;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -7,9 +7,8 @@ namespace QLTV.Controllers
 {
     public class ReportController
     {
-        // Đã sửa lại đúng địa chỉ IP máy Mac và tài khoản MySQL của Mạnh
-        private string connectionString = "Server=192.168.1.155; Port=3306; Database=LibraryManagement; Uid=manh; Pwd=24052005; SslMode=None; AllowPublicKeyRetrieval=True;";
-
+        // Nhớ đổi lại thành mật khẩu của máy bạn nhé!
+        private string connectionString = "Server=localhost;Database=LibraryManagement;Uid=root;Pwd=manh12345;";
         // No external logger used here to keep dependencies minimal.
 
         // 1. Lấy tổng số sách đang cho mượn

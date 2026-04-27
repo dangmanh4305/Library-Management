@@ -20,8 +20,8 @@ namespace QLTV.Controllers
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     // JOIN với bảng Roles để lấy tên quyền hiển thị
-                    string query = @"SELECT u.UserID, u.Username, u.FullName, u.Phone, u.Email, u.Status, r.RoleName 
-                                     FROM Users u 
+                    string query = @"SELECT u.UserID, u.Username, u.FullName, u.Phone, u.Email, u.Status, r.RoleName
+                                     FROM Users u
                                      INNER JOIN Roles r ON u.RoleID = r.RoleID";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -34,9 +34,40 @@ namespace QLTV.Controllers
                     }
                 }
             }
+            catch (MySql.Data.MySqlClient.MySqlException mex)
+            {
+                // If the database schema does not have Phone/Email columns, try a fallback query that provides NULL columns
+                if (mex.Message != null && mex.Message.Contains("Unknown column"))
+                {
+                    try
+                    {
+                        using (MySqlConnection conn = new MySqlConnection(connectionString))
+                        {
+                            string fallback = @"SELECT u.UserID, u.Username, u.FullName, NULL AS Phone, NULL AS Email, u.Status, r.RoleName
+                                               FROM Users u
+                                               INNER JOIN Roles r ON u.RoleID = r.RoleID";
+                            using (MySqlCommand cmd = new MySqlCommand(fallback, conn))
+                            {
+                                conn.Open();
+                                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+                                {
+                                    da.Fill(dt);
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex2)
+                    {
+                        MessageBox.Show("Lỗi kết nối hoặc truy vấn Database (fallback):\n" + ex2.Message, "Lỗi Controller", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi kết nối hoặc truy vấn Database:\n" + mex.Message, "Lỗi Controller", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
             catch (Exception ex)
             {
-                // BẮT LỖI: Sẽ hiển thị thẳng lên màn hình nếu sai mật khẩu hoặc sai tên Database
                 MessageBox.Show("Lỗi kết nối hoặc truy vấn Database:\n" + ex.Message, "Lỗi Controller", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dt;

@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Data;
+using System.Windows.Forms;
 
 namespace QLTV.Controllers
 {
@@ -8,6 +9,7 @@ namespace QLTV.Controllers
     {
         // Nhớ đổi lại thành mật khẩu của máy bạn nhé!
         private string connectionString = "Server=localhost;Database=LibraryManagement;Uid=root;Pwd=;";
+        // No external logger used here to keep dependencies minimal.
 
         // 1. Lấy tổng số sách đang cho mượn
         public int GetTotalBorrowedBooks()
@@ -26,7 +28,10 @@ namespace QLTV.Controllers
                     }
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy tổng số sách đang cho mượn:\n" + ex.Message, "Lỗi ReportController", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return total;
         }
 
@@ -46,7 +51,10 @@ namespace QLTV.Controllers
                     }
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy tổng doanh thu:\n" + ex.Message, "Lỗi ReportController", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return total;
         }
 
@@ -75,7 +83,10 @@ namespace QLTV.Controllers
                     }
                 }
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi lấy dữ liệu Top sách mượn:\n" + ex.Message, "Lỗi ReportController", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             return dt;
         }
     }

@@ -1,4 +1,5 @@
 ﻿using LibraryManagement.UI.Views.Librarian;
+using QLTV.Views.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace QLTV
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new QLTV.Views.WarehouseManager.frmBookManager());
+            Application.Run(new frmLogin());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using QLTV.Views.Auth;
+﻿using LibraryManagement.UI.Views.Librarian;
+using QLTV.Views.Auth;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,11 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLTV.Views.WarehouseManager
+namespace QLTV.Views.Librarian
 {
-    public partial class frmWarehouseManager : Form
+    public partial class frmLibrarian : Form
     {
-        public frmWarehouseManager()
+        public frmLibrarian()
         {
             InitializeComponent();
         }
@@ -22,8 +23,7 @@ namespace QLTV.Views.WarehouseManager
         {
             foreach (Form f in this.MdiChildren)
             {
-                // Compare types rather than Name to avoid false matches
-                if (f.GetType() == frm.GetType())
+                if (f.Name == frm.Name)
                 {
                     f.Activate();
                     return true;
@@ -31,9 +31,32 @@ namespace QLTV.Views.WarehouseManager
             }
             return false;
         }
+
         private void mnuReaderManager_Click(object sender, EventArgs e)
         {
-            frmBookManager frm = new frmBookManager();
+            // Bạn dán code gọi form frmReaderManager vào đây nhé:
+            frmReaderManager frm = new frmReaderManager();
+            if (!KiemTraTonTai(frm))
+            {
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
+
+        private void mnuLoan_Click(object sender, EventArgs e)
+        {
+            // Khởi tạo form Quản lý Mượn Trả
+            frmLoan frm = new frmLoan();
+            if (!KiemTraTonTai(frm))
+            {
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
+
+        private void mnuReaderManager_Click_1(object sender, EventArgs e)
+        {
+            frmReaderManager frm = new frmReaderManager();
             if (!KiemTraTonTai(frm))
             {
                 frm.MdiParent = this;
@@ -49,10 +72,12 @@ namespace QLTV.Views.WarehouseManager
             }
         }
 
-        private void mnuDoiMatKhau_Click_Click(object sender, EventArgs e)
+        private void mnuDoiMatKhau_Click(object sender, EventArgs e)
         {
             var form = new QLTV.Views.Auth.frmChangePassword();
             form.ShowDialog();
         }
+
+ 
     }
 }

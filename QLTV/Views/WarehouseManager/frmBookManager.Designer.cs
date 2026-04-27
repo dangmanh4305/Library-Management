@@ -55,10 +55,16 @@
             // 
             // dgvBooks
             // 
+<<<<<<< feature/book-profile
             this.dgvBooks.Location = new System.Drawing.Point(292, 142);
+=======
+            this.dgvBooks.ColumnHeadersHeight = 34;
+            this.dgvBooks.Location = new System.Drawing.Point(103, 110);
+>>>>>>> master
             this.dgvBooks.MultiSelect = false;
             this.dgvBooks.Name = "dgvBooks";
             this.dgvBooks.ReadOnly = true;
+            this.dgvBooks.RowHeadersWidth = 62;
             this.dgvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBooks.Size = new System.Drawing.Size(1011, 345);
             this.dgvBooks.TabIndex = 2;
@@ -70,7 +76,11 @@
             this.txtTitle.Location = new System.Drawing.Point(395, 511);
             this.txtTitle.Multiline = true;
             this.txtTitle.Name = "txtTitle";
+<<<<<<< feature/book-profile
             this.txtTitle.Size = new System.Drawing.Size(411, 31);
+=======
+            this.txtTitle.Size = new System.Drawing.Size(228, 26);
+>>>>>>> master
             this.txtTitle.TabIndex = 3;
             // 
             // txtISBN
@@ -79,16 +89,27 @@
             this.txtISBN.Location = new System.Drawing.Point(395, 556);
             this.txtISBN.Multiline = true;
             this.txtISBN.Name = "txtISBN";
+<<<<<<< feature/book-profile
             this.txtISBN.Size = new System.Drawing.Size(411, 31);
+=======
+            this.txtISBN.Size = new System.Drawing.Size(228, 26);
+>>>>>>> master
             this.txtISBN.TabIndex = 4;
             // 
             // cbCategory
             // 
+<<<<<<< feature/book-profile
             this.cbCategory.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCategory.Location = new System.Drawing.Point(395, 598);
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(411, 31);
             this.cbCategory.TabIndex = 5;
+=======
+            this.txtCategoryId.Location = new System.Drawing.Point(179, 412);
+            this.txtCategoryId.Name = "txtCategoryId";
+            this.txtCategoryId.Size = new System.Drawing.Size(228, 26);
+            this.txtCategoryId.TabIndex = 5;
+>>>>>>> master
             // 
             // txtQuantity
             // 
@@ -96,7 +117,11 @@
             this.txtQuantity.Location = new System.Drawing.Point(395, 641);
             this.txtQuantity.Multiline = true;
             this.txtQuantity.Name = "txtQuantity";
+<<<<<<< feature/book-profile
             this.txtQuantity.Size = new System.Drawing.Size(411, 31);
+=======
+            this.txtQuantity.Size = new System.Drawing.Size(228, 26);
+>>>>>>> master
             this.txtQuantity.TabIndex = 6;
             // 
             // chkIsRare
@@ -200,7 +225,11 @@
             this.txtSearch.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(939, 512);
             this.txtSearch.Name = "txtSearch";
+<<<<<<< feature/book-profile
             this.txtSearch.Size = new System.Drawing.Size(364, 32);
+=======
+            this.txtSearch.Size = new System.Drawing.Size(200, 26);
+>>>>>>> master
             this.txtSearch.TabIndex = 0;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
@@ -211,7 +240,11 @@
             this.qly.ForeColor = System.Drawing.Color.White;
             this.qly.Location = new System.Drawing.Point(98, 32);
             this.qly.Name = "qly";
+<<<<<<< feature/book-profile
             this.qly.Size = new System.Drawing.Size(302, 42);
+=======
+            this.qly.Size = new System.Drawing.Size(452, 64);
+>>>>>>> master
             this.qly.TabIndex = 16;
             this.qly.Text = "QUẢN LÝ SÁCH";
             // 
@@ -256,9 +289,14 @@
             // 
             // frmBookManager
             // 
+<<<<<<< feature/book-profile
             this.ClientSize = new System.Drawing.Size(1404, 753);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
+=======
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(954, 565);
+>>>>>>> master
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.dgvBooks);

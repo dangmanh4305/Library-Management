@@ -1,6 +1,6 @@
 ﻿namespace LibraryManagement.UI.Views.Librarian
 {
-    partial class frmQuanLyMuonTra
+    partial class frmLoan
     {
         /// <summary>
         /// Required designer variable.
@@ -34,34 +34,34 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.guna2TabControl1 = new Guna.UI2.WinForms.Guna2TabControl();
+            this.guna2TabControl1 = new global::Guna.UI2.WinForms.Guna2TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnLapPhieu = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLapPhieu = new global::Guna.UI2.WinForms.Guna2Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.cboSoNgayMuon = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.txtMaSachMuon = new Guna.UI2.WinForms.Guna2TextBox();
-            this.txtMaDocGiaMuon = new Guna.UI2.WinForms.Guna2TextBox();
+            this.cboSoNgayMuon = new global::Guna.UI2.WinForms.Guna2ComboBox();
+            this.txtMaSachMuon = new global::Guna.UI2.WinForms.Guna2TextBox();
+            this.txtMaDocGiaMuon = new global::Guna.UI2.WinForms.Guna2TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.dgvSachDangMuon = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.dgvSachDangMuon = new global::Guna.UI2.WinForms.Guna2DataGridView();
             this.colMaSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTenSach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNgayMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHanTra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colphat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colThaoTac = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.btnTimSachTra = new Guna.UI2.WinForms.Guna2Button();
-            this.txtMaDocGiaTra = new Guna.UI2.WinForms.Guna2TextBox();
+            this.btnTimSachTra = new global::Guna.UI2.WinForms.Guna2Button();
+            this.txtMaDocGiaTra = new global::Guna.UI2.WinForms.Guna2TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.btnGuiEmail = new Guna.UI2.WinForms.Guna2Button();
-            this.btnXuatExcel = new Guna.UI2.WinForms.Guna2Button();
-            this.dgvDanhSachQuaHan = new Guna.UI2.WinForms.Guna2DataGridView();
+            this.btnGuiEmail = new global::Guna.UI2.WinForms.Guna2Button();
+            this.btnXuatExcel = new global::Guna.UI2.WinForms.Guna2Button();
+            this.dgvDanhSachQuaHan = new global::Guna.UI2.WinForms.Guna2DataGridView();
             this.colTenDocGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colLienHe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTenSachMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colMaSachMuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNgayTre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTienPhat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel1 = new global::Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2TabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();

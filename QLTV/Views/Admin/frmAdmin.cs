@@ -30,10 +30,12 @@ namespace QLTV.Views.Admin
             }
             return false;
         }
-
+        // 💡 Gợi ý nhỏ: Nhìn tên hàm này là mình biết bạn chưa đổi (Name) của Menu "Hệ thống" 
+        // thành "mnuSystem" như bài trước mình hướng dẫn nè. 
+        // Bạn nhớ quay lại tab Design đổi lại cho code chuẩn và chuyên nghiệp nhé!
         private void hệThốngToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Trống
+
         }
 
         private void frmAdmin_Load(object sender, EventArgs e)

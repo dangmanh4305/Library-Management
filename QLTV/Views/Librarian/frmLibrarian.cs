@@ -66,23 +66,18 @@ namespace QLTV.Views.Librarian
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLogin frm = new frmLogin();
             if (MessageBox.Show("Bạn có chắc muốn đăng xuất không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (KiemTraTonTai(frm))
-                {
-                    foreach (Form f in Application.OpenForms)
-                    {
-                        if (f is frmLogin)
-                        {
-                            f.Activate();
-                            break;
-                        }
-                    }
-                }
                 this.Close();
-                frm.Show();
             }
         }
+
+        private void mnuDoiMatKhau_Click(object sender, EventArgs e)
+        {
+            var form = new QLTV.Views.Auth.frmChangePassword();
+            form.ShowDialog();
+        }
+
+ 
     }
 }

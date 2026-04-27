@@ -45,6 +45,19 @@ namespace QLTV.Views.Admin
             // Khi frmAdmin này mở lên thì frmHome đã làm xong nhiệm vụ và tự tắt rồi.
         }
 
+        // --- SỰ KIỆN GỌI FORM ĐỔI MẬT KHẨU ---
+        private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Khởi tạo Form Đổi mật khẩu từ thư mục Auth
+            frmChangePassword frm = new frmChangePassword();
+
+            // Ép Form hiện ra ở chính giữa màn hình
+            frm.StartPosition = FormStartPosition.CenterScreen;
+
+            // Dùng ShowDialog() để bắt buộc người dùng phải tắt form đổi pass mới được thao tác tiếp trên form Admin
+            frm.ShowDialog();
+        }
+
         private void quảnLýNhânSựToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmStaffManager frm = new frmStaffManager();
@@ -67,25 +80,16 @@ namespace QLTV.Views.Admin
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLogin frm = new frmLogin();
             if (MessageBox.Show("Bạn có chắc muốn đăng xuất không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (KiemTraTonTai(frm))
-                {
-                    foreach (Form f in Application.OpenForms)
-                    {
-                        if (f is frmLogin)
-                        {
-                            f.Activate();
-                            break;
-                        }
-                    }
-                }
                 this.Close();
-                frm.Show();
             }
         }
 
-
+        private void toolStripMenuItem1_Click_Click(object sender, EventArgs e)
+        {
+            var form = new QLTV.Views.Auth.frmChangePassword();
+            form.ShowDialog();
+        }
     }
 }

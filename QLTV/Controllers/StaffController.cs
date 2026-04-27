@@ -9,7 +9,7 @@ namespace QLTV.Controllers
     public class StaffController
     {
         // ⚠️ QUAN TRỌNG: Sửa 'your_password' thành mật khẩu MySQL của máy bạn!
-        private string connectionString = "Server=localhost;Database=LibraryManagement;Uid=root;Pwd=;";
+        private string connectionString = "Server=localhost;Database=LibraryManagement;Uid=root;Pwd=manh12345;";
 
         // 1. Lấy danh sách nhân viên để hiển thị lên DataGridView
         public DataTable GetAllStaffs()

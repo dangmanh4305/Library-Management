@@ -46,6 +46,38 @@ namespace QLTV.Controllers
                 return false;
             }
         }
+        public bool ChangePassword(int userId, string oldPass, string newPass)
+        {
+            try
+            {
+                using (var conn = DBConnection.GetConnection())
+                {
+                    conn.Open();
+
+                    // Kiểm tra mật khẩu cũ
+                    string checkSql = "SELECT COUNT(*) FROM Users WHERE UserID=@id AND PasswordHash=@old";
+                    using (var cmd = new MySqlCommand(checkSql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", userId);
+                        cmd.Parameters.AddWithValue("@old", oldPass);
+                        int count = int.Parse(cmd.ExecuteScalar().ToString());
+                        if (count == 0) return false;
+                    }
+
+                    // Cập nhật mật khẩu mới
+                    string updateSql = "UPDATE Users SET PasswordHash=@new WHERE UserID=@id";
+                    using (var cmd = new MySqlCommand(updateSql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@new", newPass);
+                        cmd.Parameters.AddWithValue("@id", userId);
+                        cmd.ExecuteNonQuery();
+                    }
+                    return true;
+                }
+            }
+            catch { return false; }
+        }
+
 
         public void Logout()
         {

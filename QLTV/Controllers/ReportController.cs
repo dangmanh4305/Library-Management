@@ -8,7 +8,7 @@ namespace QLTV.Controllers
     public class ReportController
     {
         // Nhớ đổi lại thành mật khẩu của máy bạn nhé!
-        private string connectionString = "Server=localhost;Database=LibraryManagement;Uid=root;Pwd=;";
+        private string connectionString = "Server=localhost;Database=LibraryManagement;Uid=root;Pwd=manh12345;";
         // No external logger used here to keep dependencies minimal.
 
         // 1. Lấy tổng số sách đang cho mượn

@@ -1,5 +1,6 @@
 ﻿using LibraryManagement.UI.Views.Librarian;
 using QLTV.Views.Auth;
+using QLTV.Controllers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -78,6 +79,14 @@ namespace QLTV.Views.Librarian
             form.ShowDialog();
         }
 
- 
+        private void trangCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProfile frm = new frmProfile(UserSession.UserId);
+            if (!KiemTraTonTai(frm))
+            {
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
     }
 }

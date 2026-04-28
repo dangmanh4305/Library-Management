@@ -47,5 +47,20 @@ namespace QLTV.DBConnections
                 }
             }
         }
+
+        public static object ExecuteScalar(string query, MySqlParameter[] parameters = null)
+        {
+            using (MySqlConnection conn = GetConnection())
+            {
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    if (parameters != null)
+                        cmd.Parameters.AddRange(parameters);
+
+                    conn.Open();
+                    return cmd.ExecuteScalar();
+                }
+            }
+        }
     }
 }

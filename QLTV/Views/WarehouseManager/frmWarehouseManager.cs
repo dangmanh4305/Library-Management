@@ -1,4 +1,5 @@
 ﻿using QLTV.Views.Auth;
+using QLTV.Controllers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -53,6 +54,17 @@ namespace QLTV.Views.WarehouseManager
         {
             var form = new QLTV.Views.Auth.frmChangePassword();
             form.ShowDialog();
+        }
+
+        private void trangCáNhânToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Pass current user id to profile form
+            frmProfile frm = new frmProfile(UserSession.UserId);
+            if (!KiemTraTonTai(frm))
+            {
+                frm.MdiParent = this;
+                frm.Show();
+            }
         }
     }
 }

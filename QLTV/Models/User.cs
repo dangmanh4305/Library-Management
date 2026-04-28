@@ -20,4 +20,6 @@ namespace QLTV.Models
 
         public string RoleName { get; set; }
     }
+
+    
 }

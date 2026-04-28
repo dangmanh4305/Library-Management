@@ -6,12 +6,12 @@ using ClosedXML.Excel;
 
 namespace LibraryManagement.UI.Views.Librarian
 {
-    public partial class frmQuanLyMuonTra : Form
+    public partial class frmLoan : Form
     {
         // Khởi tạo Controller
         private LoanController loanCtrl = new LoanController();
 
-        public frmQuanLyMuonTra()
+        public frmLoan()
         {
             InitializeComponent();
         }

@@ -198,6 +198,7 @@
     <Compile Include="Controllers\ReaderController.cs" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
+    <Compile Include="Models\UserSession.cs" />
     <Compile Include="DBConnections\BookDAO.cs" />
     <Compile Include="DBConnections\DBConnection.cs" />
     <Compile Include="Models\Book.cs" />
@@ -212,23 +213,23 @@
     <Compile Include="Views\Admin\frmAdmin.Designer.cs">
       <DependentUpon>frmAdmin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Admin\frmReport.cs">
+    <Compile Include="Views\Auth\frmChangePassword.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Admin\frmReport.Designer.cs">
-      <DependentUpon>frmReport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Admin\frmStaffManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\Admin\frmStaffManager.Designer.cs">
-      <DependentUpon>frmStaffManager.cs</DependentUpon>
+    <Compile Include="Views\Auth\frmChangePassword.Designer.cs">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Auth\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Views\Auth\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\frmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\frmHome.Designer.cs">
+      <DependentUpon>frmHome.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\frmProfile.cs">
       <SubType>Form</SubType>
@@ -242,11 +243,17 @@
     <Compile Include="Views\Librarian\frmAddEditReader.Designer.cs">
       <DependentUpon>frmAddEditReader.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Librarian\frmQuanLyMuonTra.cs">
+    <Compile Include="Views\Librarian\frmLibrarian.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Librarian\frmQuanLyMuonTra.Designer.cs">
-      <DependentUpon>frmQuanLyMuonTra.cs</DependentUpon>
+    <Compile Include="Views\Librarian\frmLibrarian.Designer.cs">
+      <DependentUpon>frmLibrarian.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Librarian\frmLoan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Librarian\frmLoan.Designer.cs">
+      <DependentUpon>frmLoan.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Librarian\frmReaderManager.cs">
       <SubType>Form</SubType>
@@ -254,16 +261,16 @@
     <Compile Include="Views\Librarian\frmReaderManager.Designer.cs">
       <DependentUpon>frmReaderManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\manage\frmStaffManager.cs">
+    <Compile Include="Views\Admin\frmStaffManager.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\manage\frmStaffManager.Designer.cs">
+    <Compile Include="Views\Admin\frmStaffManager.Designer.cs">
       <DependentUpon>frmStaffManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Report\frmDashboard.cs">
+    <Compile Include="Views\Admin\frmDashboard.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Report\frmDashboard.Designer.cs">
+    <Compile Include="Views\Admin\frmDashboard.Designer.cs">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\WarehouseManager\frmBookManager.cs">
@@ -286,27 +293,46 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Admin\frmAdmin.resx">
+      <DependentUpon>frmAdmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Auth\frmChangePassword.resx">
+      <DependentUpon>frmChangePassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Auth\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\frmHome.resx">
+      <DependentUpon>frmHome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\frmProfile.resx">
       <DependentUpon>frmProfile.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Librarian\frmAddEditReader.resx">
       <DependentUpon>frmAddEditReader.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Librarian\frmQuanLyMuonTra.resx">
-      <DependentUpon>frmQuanLyMuonTra.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Librarian\frmLibrarian.resx">
+      <DependentUpon>frmLibrarian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Librarian\frmLoan.resx">
+      <DependentUpon>frmLoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Librarian\frmReaderManager.resx">
       <DependentUpon>frmReaderManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\manage\frmStaffManager.resx">
+    <EmbeddedResource Include="Views\Admin\frmStaffManager.resx">
       <DependentUpon>frmStaffManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Report\frmDashboard.resx">
+    <EmbeddedResource Include="Views\Admin\frmDashboard.resx">
       <DependentUpon>frmDashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\WarehouseManager\frmBookManager.resx">
       <DependentUpon>frmBookManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WarehouseManager\frmWarehouseManager.resx">
+      <DependentUpon>frmWarehouseManager.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -334,5 +360,13 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="resources\dangnhap_ad_tt_kho.jpg" />
+    <Content Include="resources\lock_login.jpg" />
+    <Content Include="resources\nguoi_login.jpg" />
+    <Content Include="resources\thu vien.jpg" />
+    <Content Include="resources\user_login.jpeg" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+﻿using MySqlConnector;
 using QLTV.Models;
 using System;
 using System.Data;
@@ -8,8 +8,8 @@ namespace QLTV.Controllers
 {
     public class StaffController
     {
-        // ⚠️ QUAN TRỌNG: Sửa 'your_password' thành mật khẩu MySQL của máy bạn!
-        private string connectionString = "Server=localhost;Database=LibraryManagement;Uid=root;Pwd=;";
+        // ⚠️ Đã sửa: Đổi 'connString' thành 'connectionString' và thêm 'private'
+        private string connectionString = "Server=192.168.1.155; Port=3306; Database=LibraryManagement; Uid=manh; Pwd=24052005; SslMode=None; AllowPublicKeyRetrieval=True;";
 
         // 1. Lấy danh sách nhân viên để hiển thị lên DataGridView
         public DataTable GetAllStaffs()
@@ -20,8 +20,8 @@ namespace QLTV.Controllers
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     // JOIN với bảng Roles để lấy tên quyền hiển thị
-                    string query = @"SELECT u.UserID, u.Username, u.FullName, u.Phone, u.Email, u.Status, r.RoleName 
-                                     FROM Users u 
+                    string query = @"SELECT u.UserID, u.Username, u.FullName, u.Phone, u.Email, u.Status, r.RoleName
+                                     FROM Users u
                                      INNER JOIN Roles r ON u.RoleID = r.RoleID";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -34,9 +34,40 @@ namespace QLTV.Controllers
                     }
                 }
             }
+            catch (MySql.Data.MySqlClient.MySqlException mex)
+            {
+                // Phân tích lỗi nếu Database không có cột Phone/Email (Fallback)
+                if (mex.Message != null && mex.Message.Contains("Unknown column"))
+                {
+                    try
+                    {
+                        using (MySqlConnection conn = new MySqlConnection(connectionString))
+                        {
+                            string fallback = @"SELECT u.UserID, u.Username, u.FullName, NULL AS Phone, NULL AS Email, u.Status, r.RoleName
+                                               FROM Users u
+                                               INNER JOIN Roles r ON u.RoleID = r.RoleID";
+                            using (MySqlCommand cmd = new MySqlCommand(fallback, conn))
+                            {
+                                conn.Open();
+                                using (MySqlDataAdapter da = new MySqlDataAdapter(cmd))
+                                {
+                                    da.Fill(dt);
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex2)
+                    {
+                        MessageBox.Show("Lỗi kết nối hoặc truy vấn Database (fallback):\n" + ex2.Message, "Lỗi Controller", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi kết nối hoặc truy vấn Database:\n" + mex.Message, "Lỗi Controller", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
             catch (Exception ex)
             {
-                // BẮT LỖI: Sẽ hiển thị thẳng lên màn hình nếu sai mật khẩu hoặc sai tên Database
                 MessageBox.Show("Lỗi kết nối hoặc truy vấn Database:\n" + ex.Message, "Lỗi Controller", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dt;
@@ -75,6 +106,8 @@ namespace QLTV.Controllers
                 return false;
             }
         }
+
+        // 3. Cập nhật nhân viên
         public bool UpdateStaff(User staff)
         {
             try
@@ -129,6 +162,8 @@ namespace QLTV.Controllers
                 return false;
             }
         }
+
+        // 5. Lấy danh sách chức vụ
         public DataTable GetRoles()
         {
             DataTable dt = new DataTable();

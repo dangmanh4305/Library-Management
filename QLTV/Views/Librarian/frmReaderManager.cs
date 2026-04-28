@@ -23,7 +23,6 @@ namespace QLTV.Views.Librarian
             dataGridView1.CellDoubleClick += DataGridView1_CellDoubleClick;
             dataGridView1.CellContentClick += DataGridView1_CellContentClick;
             txtSearch.KeyDown += TxtSearch_KeyDown;
-            btnX.Click += (s, e) => this.Close();
         }
 
         private void frmReaderManager_Load(object sender, EventArgs e)

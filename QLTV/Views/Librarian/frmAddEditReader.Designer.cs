@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnX = new System.Windows.Forms.Button();
             this.lbAdd = new System.Windows.Forms.Label();
             this.lbEdit = new System.Windows.Forms.Label();
             this.lbReaderID = new System.Windows.Forms.Label();
@@ -47,38 +46,25 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnX
-            // 
-            this.btnX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnX.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnX.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnX.ForeColor = System.Drawing.Color.White;
-            this.btnX.Location = new System.Drawing.Point(763, -1);
-            this.btnX.Name = "btnX";
-            this.btnX.Size = new System.Drawing.Size(36, 37);
-            this.btnX.TabIndex = 5;
-            this.btnX.Text = "X";
-            this.btnX.UseVisualStyleBackColor = false;
-            // 
             // lbAdd
             // 
             this.lbAdd.AutoSize = true;
-            this.lbAdd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbAdd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAdd.ForeColor = System.Drawing.Color.DodgerBlue;
             this.lbAdd.Location = new System.Drawing.Point(272, 27);
             this.lbAdd.Name = "lbAdd";
-            this.lbAdd.Size = new System.Drawing.Size(194, 26);
+            this.lbAdd.Size = new System.Drawing.Size(189, 32);
             this.lbAdd.TabIndex = 6;
             this.lbAdd.Text = "THÊM ĐỘC GIẢ";
             // 
             // lbEdit
             // 
             this.lbEdit.AutoSize = true;
-            this.lbEdit.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbEdit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbEdit.ForeColor = System.Drawing.Color.DodgerBlue;
             this.lbEdit.Location = new System.Drawing.Point(294, 27);
             this.lbEdit.Name = "lbEdit";
-            this.lbEdit.Size = new System.Drawing.Size(169, 26);
+            this.lbEdit.Size = new System.Drawing.Size(170, 32);
             this.lbEdit.TabIndex = 7;
             this.lbEdit.Text = "SỬA ĐỘC GIẢ";
             // 
@@ -224,7 +210,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.CancelButton = this.btnX;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnReset);
             this.Controls.Add(this.btnSave);
@@ -242,8 +227,6 @@
             this.Controls.Add(this.lbReaderID);
             this.Controls.Add(this.lbEdit);
             this.Controls.Add(this.lbAdd);
-            this.Controls.Add(this.btnX);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAddEditReader";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAddEditReader";
@@ -254,8 +237,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnX;
         private System.Windows.Forms.Label lbAdd;
         private System.Windows.Forms.Label lbEdit;
         private System.Windows.Forms.Label lbReaderID;
